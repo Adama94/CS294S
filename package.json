@@ -1,0 +1,15 @@
+{
+  "name": "thingengine-device-google-calendar",
+  "version": "1.0.0",
+  "description": "Google Calendar support in ThingEngine",
+  "author": "CS 294S",
+  "contributors": [
+    {
+      "name": "Alisha Adam",
+      "email": "aadam@stanford.edu"
+    }
+  ],
+  "main": "device.js",
+  "dependencies": {
+  }
+}
