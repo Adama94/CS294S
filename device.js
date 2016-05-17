@@ -7,7 +7,7 @@ module.exports = new Tp.DeviceClass({
     UseOAuth2: Tp.Helpers.OAuth2({
 		kind: 'com.google.calendar',
 		client_id: '281514559346-0348d4rmgrdk00650mlo2uba2plhgsv8.apps.googleusercontent.com',
-		client_secret: 'SqOpyvbln3TI1wA-QEc_QJv-',
+		client_secret: 'FdBclioya3GV1jN-DRp_DWi-',
 		scope: ['openid','profile','email',
 				'https://www.googleapis.com/auth/plus.me',
 				'https://www.googleapis.com/auth/calendar.readonly'],
