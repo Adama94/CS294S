@@ -11,14 +11,34 @@ module.exports = new Tp.ChannelClass({
         this.parent();
         this.device = device;
         this.timeout = null;
-    }
+    },
 
     get auth() {
         return 'Bearer ' + this.device.accessToken;
     },
 
     _doOpen: function() {        
-        this.timeout = setTimeout(function() { this.emitEvent(['hello']); }.bind(this), 5000);
+        // this.emitEvent([this.device.accessToken]);
+        // var calendarId;
+        var self = this;
+        return Tp.Helpers.Http.get('https://www.googleapis.com/calendar/v3/users/me/calendarList/primary', {auth: auth, accept: 'application/json' })
+            .then(function(response) {
+                var parsedResponse = JSON.parse(response);
+                self.emitEvent([parsedResponse.summary]);
+                return parsedResponse.summary;
+            });    
+
+        // return Tp.Helpers.Http.get('GET https://www.googleapis.com/calendar/v3/users/me/calendarList', { auth: auth, accept: 'application/json' })
+        //     .then(function(response) {
+        //         var parsed = JSON.parse(response);
+        //         calendarId = parsed.id;
+                
+        //         return Tp.Helpers.Http.get('GET https://www.googleapis.com/calendar/v3/users/me/calendarList/' + calendarId, {auth: auth, accept: 'application/json' })
+        //             .then(function(response) {
+        //                 var parsedResponse = JSON.parse(response);
+        //                 return parsedResponse.summary;
+        //             });                            
+        //     });
     },
 
     _doClose: function() {
